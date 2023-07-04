@@ -26,8 +26,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug',
+    list_display = ['product', 'slug',
                     'available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['available']
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {'slug': ('product',)}

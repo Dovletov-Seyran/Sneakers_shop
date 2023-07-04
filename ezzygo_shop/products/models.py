@@ -56,10 +56,10 @@ class Product(models.Model):
                              related_name='sizes',
                              on_delete=models.CASCADE)
     gender_ru = models.ForeignKey(Gender,
-                               related_name='genders',
+                               related_name='genders_ru',
                                on_delete=models.CASCADE)
     gender_tm = models.ForeignKey(Gender,
-                               related_name='genders',
+                               related_name='genders_tm',
                                on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,
@@ -95,10 +95,20 @@ class Product(models.Model):
 
 class Order(models.Model):
     product = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=150)
+    slug = models.SlugField(max_length=150, unique=True)
+    production = models.CharField(max_length=150)
     user_name = models.CharField(max_length=150)
     user_number = models.IntegerField()
     user_adress = models.CharField(max_length=150)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['product']
+
+    
+    def __str__(self):
+        return self.product
+
+
