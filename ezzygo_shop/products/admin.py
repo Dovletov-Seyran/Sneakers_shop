@@ -19,15 +19,12 @@ class GenderAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'price',
-                    'available', 'created', 'updated']
-    list_filter = ['available', 'created', 'updated']
-    list_editable = ['price', 'available']
+                    'stock', 'created', 'updated']
+    list_filter = ['stock', 'created', 'updated']
+    list_editable = ['price', 'stock']
     prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['product', 'slug',
-                    'available', 'created', 'updated']
-    list_filter = ['available', 'created', 'updated']
-    list_editable = ['available']
-    prepopulated_fields = {'slug': ('product',)}
+    list_display = ['product', 'created', 'updated']
+    list_filter = ['created', 'updated']

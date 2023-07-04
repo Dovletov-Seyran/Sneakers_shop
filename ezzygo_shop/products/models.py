@@ -77,7 +77,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2)
     stock = models.BooleanField()
-    available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -95,12 +94,10 @@ class Product(models.Model):
 
 class Order(models.Model):
     product = models.CharField(max_length=150)
-    slug = models.SlugField(max_length=150, unique=True)
     production = models.CharField(max_length=150)
     user_name = models.CharField(max_length=150)
     user_number = models.IntegerField()
-    user_adress = models.CharField(max_length=150)
-    available = models.BooleanField(default=True)
+    user_address = models.CharField(max_length=150)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
